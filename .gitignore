@@ -3,6 +3,7 @@ admin_panel/
 driver_app/
 delivery-system-final/
 firebase/
+**/serviceAccountKey.json
 
 # Flutter
 .dart_tool/
