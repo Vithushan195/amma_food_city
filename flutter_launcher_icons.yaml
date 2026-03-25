@@ -1,0 +1,22 @@
+# Run: flutter pub run flutter_launcher_icons
+# This generates app icons for Android and iOS from a single source image.
+# Place your 1024x1024 app icon at assets/icon/app_icon.png before running.
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  
+  # Android adaptive icon (Android 8+)
+  adaptive_icon_background: "#0B3B2D"
+  adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
+  
+  # Remove alpha channel for iOS (required by App Store)
+  remove_alpha_ios: true
+  
+  # Web favicon
+  web:
+    generate: true
+    image_path: "assets/icon/app_icon.png"
+    background_color: "#0B3B2D"
+    theme_color: "#0B3B2D"

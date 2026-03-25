@@ -1,0 +1,54 @@
+# ----- SUB-PROJECTS (not part of customer app) -----
+admin_panel/
+driver_app/
+delivery-system-final/
+firebase/
+
+# Flutter
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# Android
+**/android/**/GeneratedPluginRegistrant.java
+**/android/local.properties
+**/android/key.properties
+**/android/.gradle/
+**/android/app/debug
+**/android/app/profile
+**/android/app/release
+
+# iOS
+**/ios/Flutter/GeneratedPluginRegistrant.*
+**/ios/.symlinks/
+**/ios/Pods/
+**/ios/Runner.xcworkspace/xcuserdata/
+
+# Signing keys
+*.jks
+*.keystore
+*.p12
+*.mobileprovision
+
+# Firebase
+firebase_options.dart
+**/firebase/functions/node_modules/
+
+# Environment
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+coverage/

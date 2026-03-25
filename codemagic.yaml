@@ -1,0 +1,169 @@
+# Codemagic CI/CD Configuration
+# Project: Amma Food City - Asian Grocery Ecommerce App
+# Stack: Flutter + Firebase + Stripe
+# 
+# SETUP STEPS:
+# 1. Push this file to your GitHub repo root
+# 2. Connect repo at https://codemagic.io
+# 3. Add environment variables in Codemagic dashboard (see below)
+
+workflows:
+  # ============================================
+  # iOS Build & Deploy
+  # ============================================
+  ios-release:
+    name: iOS Release Build
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+    
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      groups:
+        - app_store_credentials   # Add in Codemagic dashboard
+        - firebase_credentials    # Add in Codemagic dashboard
+      vars:
+        BUNDLE_ID: "com.ammafoodcity.app"  # Update with your bundle ID
+        APP_STORE_APP_ID: "000000000"       # Update after creating App Store listing
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.ammafoodcity.app  # Update with your bundle ID
+
+    scripts:
+      - name: Set up local.properties
+        script: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+
+      - name: Get Flutter packages
+        script: flutter packages pub get
+
+      - name: Install CocoaPods dependencies
+        script: |
+          cd ios
+          pod install
+
+      - name: Set up code signing
+        script: |
+          xcode-project use-profiles
+
+      - name: Flutter build iOS
+        script: |
+          flutter build ipa \
+            --release \
+            --build-name=1.0.0 \
+            --build-number=$(($(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID") + 1)) \
+            --export-options-plist=/Users/builder/export_options.plist
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - flutter_drive.log
+
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com  # Update with your email
+        notify:
+          success: true
+          failure: true
+      # Uncomment below when Apple Developer Account is ready:
+      # app_store_connect:
+      #   auth: integration
+      #   submit_to_testflight: true
+      #   beta_groups:
+      #     - Internal Testers
+
+  # ============================================
+  # Android Build & Deploy
+  # ============================================
+  android-release:
+    name: Android Release Build
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+
+    environment:
+      flutter: stable
+      java: 17
+      groups:
+        - google_play_credentials  # Add in Codemagic dashboard
+        - firebase_credentials     # Add in Codemagic dashboard
+      vars:
+        PACKAGE_NAME: "com.ammafoodcity.app"  # Update with your package name
+
+    scripts:
+      - name: Set up local.properties
+        script: echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+
+      - name: Get Flutter packages
+        script: flutter packages pub get
+
+      - name: Build Android App Bundle
+        script: |
+          flutter build appbundle \
+            --release \
+            --build-name=1.0.0 \
+            --build-number=$BUILD_NUMBER
+
+    artifacts:
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/mapping.txt
+      - flutter_drive.log
+
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com  # Update with your email
+        notify:
+          success: true
+          failure: true
+      # Uncomment when Google Play is ready:
+      # google_play:
+      #   credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+      #   track: internal
+
+  # ============================================
+  # Development Build (Both platforms - on every push)
+  # ============================================
+  dev-build:
+    name: Development Build
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+    
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: develop
+          include: true
+        - pattern: feature/*
+          include: true
+
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+
+    scripts:
+      - name: Get Flutter packages
+        script: flutter packages pub get
+
+      - name: Analyze code
+        script: flutter analyze --no-fatal-infos
+
+      - name: Run tests
+        script: flutter test
+
+      - name: Build debug APK (quick validation)
+        script: flutter build apk --debug
+
+    artifacts:
+      - build/**/outputs/**/*.apk
+      - flutter_drive.log
+
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
+        notify:
+          success: false
+          failure: true
