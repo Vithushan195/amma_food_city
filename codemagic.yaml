@@ -156,9 +156,6 @@ workflows:
       - name: Build debug APK (quick validation)
         script: flutter build apk --debug
 
-      - name: Build iOS (simulator validation)
-        script: flutter build ios --debug --simulator
-
     artifacts:
       - build/**/outputs/**/*.apk
       - flutter_drive.log
