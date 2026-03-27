@@ -156,6 +156,9 @@ workflows:
       - name: Build debug APK (quick validation)
         script: flutter build apk --debug
 
+      - name: Build iOS (no codesign validation)
+        script: flutter build ios --debug --no-codesign
+
     artifacts:
       - build/**/outputs/**/*.apk
       - flutter_drive.log
