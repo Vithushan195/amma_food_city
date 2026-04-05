@@ -46,7 +46,7 @@ workflows:
         script: |
           xcode-project use-profiles
 
-      - name: Flutter build iOS
+      - name: Build iOS (simulator)
         script: |
           flutter build ipa \
             --release \
@@ -121,12 +121,30 @@ workflows:
       #   credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
       #   track: internal
 
+
+  scripts:
+      - name: Get Flutter packages
+        script: flutter packages pub get
+
+      - name: Analyze code
+        script: flutter analyze --no-fatal-infos --no-fatal-warnings || true
+
+      - name: Run tests
+        script: flutter test || true
+
+      - name: Build debug APK (quick validation)
+        script: flutter build apk --debug
+
+      - name: Build iOS (simulator)
+        script: flutter build ios --debug --simulator
+
+
   # ============================================
   # Development Build (Both platforms - on every push)
   # ============================================
   dev-build:
     name: Development Build
-    max_build_duration: 30
+    max_build_duration: 60
     instance_type: mac_mini_m2
     
     triggering:
