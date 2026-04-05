@@ -1,0 +1,142 @@
+{
+  "project_info": {
+    "project_number": "610671451496",
+    "project_id": "amma-food-city",
+    "storage_bucket": "amma-food-city.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610671451496:android:63267c7f605fe5e6078add",
+        "android_client_info": {
+          "package_name": "com.ammafoodcity.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610671451496-nm44p97s8cjgakh7egli2jbg1umpaj27.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ammafoodcity.app",
+            "certificate_hash": "9d12fb061e1cd34af86036729c6965bc241abc77"
+          }
+        },
+        {
+          "client_id": "610671451496-0teanfnev3olsng678pgi40suim05aql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIzC94SifvOgj8VPaW5ZsTqJP6FciFTwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610671451496-0teanfnev3olsng678pgi40suim05aql.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610671451496-jd708rv4ket3phtd7rqusqbhvtqljvcc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ammaFoodCity"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610671451496:android:48c52038eab42d53078add",
+        "android_client_info": {
+          "package_name": "com.ammafoodcity.driver_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610671451496-9jc5nicnkcdqc88rvondbp422u2d8d1h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ammafoodcity.driver_app",
+            "certificate_hash": "9d12fb061e1cd34af86036729c6965bc241abc77"
+          }
+        },
+        {
+          "client_id": "610671451496-0teanfnev3olsng678pgi40suim05aql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIzC94SifvOgj8VPaW5ZsTqJP6FciFTwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610671451496-0teanfnev3olsng678pgi40suim05aql.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610671451496-jd708rv4ket3phtd7rqusqbhvtqljvcc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ammaFoodCity"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610671451496:android:b5c88d9c02527ffa078add",
+        "android_client_info": {
+          "package_name": "com.example.amma_food_city"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610671451496-o8h6eciv91ndtnvjnq3cdiugoql4arvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.amma_food_city",
+            "certificate_hash": "9d12fb061e1cd34af86036729c6965bc241abc77"
+          }
+        },
+        {
+          "client_id": "610671451496-0teanfnev3olsng678pgi40suim05aql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIzC94SifvOgj8VPaW5ZsTqJP6FciFTwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610671451496-0teanfnev3olsng678pgi40suim05aql.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "610671451496-jd708rv4ket3phtd7rqusqbhvtqljvcc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ammaFoodCity"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
